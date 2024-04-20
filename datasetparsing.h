@@ -6,18 +6,20 @@
 #include <vector>
 #include <string>
 #include "Tweet.h"
+#include "TweetTable.h"
 
-std::vector<Tweet> parse_entry(string file)
+TweetTable parse_entry(std::string file_name)
 {
-    std::string filename{file};
+    std::string filename{file_name};
     std::ifstream input{filename};
+    std::vector<std::vector<std::string>> csvRows;
 
+    
+    TweetTable bigboy(2000000);
     if (!input.is_open()) {
         std::cerr << "Couldn't read file: " << filename << "\n";
-        return; 
+        return bigboy;
     }
-
-    std::vector<std::vector<std::string>> csvRows;
 
     for (std::string line; std::getline(input, line);) {
         std::istringstream ss(std::move(line));
@@ -33,12 +35,11 @@ std::vector<Tweet> parse_entry(string file)
         csvRows.push_back(std::move(row));
     }
 
-    std::vector<Tweet> tweets;
     for (int i = 1; i < csvRows.size(); i++) {
         std::string tweet = csvRows[i][1];
-        int emotiontag = stoi(csvRows[i][2];
+        int emotiontag = stoi(csvRows[i][2]);
         Tweet obj(tweet, emotiontag);
-        tweets.push_back(obj);
+        bigboy.insert(obj);
     }
-    return tweets;
+    return bigboy;
 }

@@ -1,6 +1,8 @@
+
 #pragma once
 #include "Tweet.h"
 #include <vector>
+#include <cstdint>
 
 class TweetTable
 {
@@ -12,26 +14,14 @@ class TweetTable
     int size;
 
     public:
-    TweetTable()
-    {
-        arr.resize(1);
-        load_factor = 0;
-        capacity = 1;
-        size = 0;
-    };
-    TweetTable(int initial_cap)
-    {
-        capacity = initial_cap;
-        arr.resize(capacity);
-        load_factor = 0;
-        size = 0;
-    };
-    int HashFunction1();
-    int Hashfunction2();
-
-    void insert(std::string tweet, std::string emotion);
-
-    void setLoadFactor(){load_factor = size/capacity;};
+    TweetTable();
+    TweetTable(int initial_cap);
+    uint32_t Hashfunction_fnv1a(const std::string& str);
+    int Hashfunction_MMH3();
+    void resize_arr();
+    void insert(Tweet jojo);
+    Tweet search(const std::string& text);
+    void setLoadFactor();
 };
 
 
