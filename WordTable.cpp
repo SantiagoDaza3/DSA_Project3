@@ -205,3 +205,20 @@ void WordTable::contribute_to_dataset(std::string& passage, int emotiontag, int 
         insert(obj, option);
     }
 };
+
+float WordTable::passion_analysis(std::string& passage, int option)
+{
+    std::vector<float> passed = passage_sentiment_analysis(passage, option);
+    float sum = 0.0, mean, variance = 0.0, stdDev = 0.0;
+    int i = 0;
+    for (int i = 0; i < 6; i++)
+    {
+        sum += passed[i];
+    }
+    mean = sum / 6;
+    for (int i = 0; i < 6; i++)
+    {
+        stdDev += std::pow(passed[i] - mean, 2);
+    }
+    return std::sqrt(stdDev/6)/mean;
+};
