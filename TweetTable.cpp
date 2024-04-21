@@ -39,15 +39,6 @@ void TweetTable::setLoadFactor()
 {
     load_factor = size/capacity;
 };
-uint32_t TweetTable::Hashfunction_fnv1a(const std::string& str)
-{
-    uint32_t hash = 2166136261;
-    for (char c : str) {
-        hash ^= static_cast<uint32_t>(c);
-        hash *= 16777619;
-    }
-    return hash;
-};
 
 void TweetTable::insert(Tweet jojo)
 {

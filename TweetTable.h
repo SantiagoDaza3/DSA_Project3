@@ -1,27 +1,25 @@
 
 #pragma once
 #include "Tweet.h"
+#include "Hashfunctions.h"
 #include <vector>
-#include <cstdint>
 
 class TweetTable
 {
     private://screen.blit();
-    std::vector<Tweet> arr;
-    std::string emotion;
-    float load_factor;
-    int capacity;
-    int size;
+    std::vector<Tweet> arr;//contains every Tweet along with its emotion
+    float load_factor;//if above 0.7, resize
+    int capacity;//sets the number of buckets
+    int size;//how many elements in the array
 
     public:
-    TweetTable();
-    TweetTable(int initial_cap);
-    uint32_t Hashfunction_fnv1a(const std::string& str);
+    TweetTable();//default constructor, should just create a vector with a single empty element
+    TweetTable(int initial_cap);//default constructor, sets the vector size to a certain amoutn
     int Hashfunction_MMH3();
-    void resize_arr();
-    void insert(Tweet jojo);
-    Tweet search(const std::string& text);
-    void setLoadFactor();
+    void resize_arr();//resizes array and rehashes every contained Tweet
+    void insert(Tweet jojo);//inserts tweet if it doesn't already exist
+    Tweet search(const std::string& text);//finds the element if it exists, IF THE ELEMENT IS NOT IN THE HASH TABLE, IT WILL RETURN A TWEET WITH 
+    void setLoadFactor();//simply sets the value of load_factor, should automatically be called in insert
 };
 
 
