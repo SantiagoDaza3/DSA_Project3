@@ -17,8 +17,8 @@ class TweetTable
     TweetTable(int initial_cap);//default constructor, sets the vector size to a certain amoutn
     int Hashfunction_MMH3();
     void resize_arr();//resizes array and rehashes every contained Tweet
-    void insert(Tweet jojo);//inserts tweet if it doesn't already exist
-    Tweet search(const std::string& text);//finds the element if it exists, IF THE ELEMENT IS NOT IN THE HASH TABLE, IT WILL RETURN A TWEET WITH 
+    void insert(Tweet jojo, int option);//inserts tweet if it doesn't already exist
+    Tweet search(const std::string& text, int option);//finds the element if it exists, IF THE ELEMENT IS NOT IN THE HASH TABLE, IT WILL RETURN A TWEET WITH 
     void setLoadFactor();//simply sets the value of load_factor, should automatically be called in insert
 };
 
