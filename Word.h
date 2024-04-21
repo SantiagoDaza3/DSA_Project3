@@ -8,4 +8,5 @@ struct Word//each tweet's words separated by spaces are added to the dataset
     Word();
     Word(std::string _tweet, int tag);//base constructor, this is what you'll be using when inserting the first time
     void modify_value(int tag);
+    float calculate_score(unsigned int emotiontag);
 };
