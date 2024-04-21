@@ -14,7 +14,7 @@ TweetTable::TweetTable(int initial_cap)
     load_factor = 0;
     size = 0;
 };
-void TweetTable::resize_arr()
+void TweetTable::resize_arr(int option)
 {
     std::vector<Tweet> temp_arr;
     for(int i = 0; i < capacity; i++)
@@ -30,7 +30,7 @@ void TweetTable::resize_arr()
     arr.resize(capacity);
     for(int i = 0; i < temp_arr.size(); i++)
     {
-        insert(temp_arr[i]);
+        insert(temp_arr[i], option);
     }
     setLoadFactor();
 }
@@ -77,7 +77,7 @@ void TweetTable::insert(Tweet jojo, int option)
     setLoadFactor();
     if(load_factor >= 0.7)
     {
-        resize_arr();
+        resize_arr(option);
     }
 };
 Tweet TweetTable::search(const std::string& text, int option)
