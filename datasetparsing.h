@@ -24,10 +24,8 @@ std::vector<std::vector<std::string>> parsed_rows(std::string file_name)
         std::istringstream ss(std::move(line));
         std::vector<std::string> row;
         if (!csvRows.empty()) {
-            // We expect each row to be as big as the first row
             row.reserve(csvRows.front().size());
         }
-        // std::getline can split on other characters, here we use ','
         for (std::string value; std::getline(ss, value, ',');) {
             row.push_back(std::move(value));
         }
