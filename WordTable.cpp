@@ -47,11 +47,16 @@ void WordTable::setLoadFactor()
     load_factor = size/capacity;
 };
 
-void WordTable::insert(Word jojo)
+void WordTable::insert(Word jojo, int option)
 {
     //set up initial values
     std::string text = jojo.word_name;
-    uint32_t hash = Hashfunction_fnv1a(text);//find the hash number
+    uint32_t hash;//find the hash number
+    if (option == 1) {
+        hash = Hashfunction_fnv1a(text);
+    }else{
+        hash = Hashfunction_mmh3(text);
+    }
     unsigned int index = hash % capacity;//relate the hash to capacity
     unsigned int n = 0;//will be used for PROBING
 
@@ -93,9 +98,14 @@ void WordTable::insert(Word jojo)
 
 
 //traversal functions
-Word WordTable::search(const std::string& text)
+Word WordTable::search(const std::string& text, int option)
 {
-    uint32_t hash = Hashfunction_fnv1a(text);
+    uint32_t hash;
+    if (option == 1) {
+        hash = Hashfunction_fnv1a(text);
+    }else{
+        hash = Hashfunction_mmh3(text);
+    }
     unsigned int index = hash % capacity;
     int n = 0;
     while((index + n*n) < capacity)
