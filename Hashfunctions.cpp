@@ -10,3 +10,10 @@ uint32_t Hashfunction_fnv1a(const std::string& str)
     }
     return hash;
 };
+
+uint32_t Hashfunction_mmh3(const std::string& str)
+{
+    uint32_t hash = 0;
+    MurmurHash3_x86_32(str.c_str(), str.size(), 0, &hash);
+    return hash;
+};
