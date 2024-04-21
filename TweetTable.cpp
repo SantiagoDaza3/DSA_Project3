@@ -40,10 +40,15 @@ void TweetTable::setLoadFactor()
     load_factor = size/capacity;
 };
 
-void TweetTable::insert(Tweet jojo)
+void TweetTable::insert(Tweet jojo, int option)
 {
     std::string text = jojo.tweet;
-    uint32_t hash = Hashfunction_fnv1a(text);
+    uint32_t hash;
+    if (option == 1) { 
+        hash = Hashfunction_fnv1a(text);
+    }else{
+        hash = Hashfunction_mmh3(text);
+    }    
     unsigned int index = hash % capacity;
     unsigned int n = 0;
     bool while_condition = true;
@@ -75,9 +80,14 @@ void TweetTable::insert(Tweet jojo)
         resize_arr();
     }
 };
-Tweet TweetTable::search(const std::string& text)
+Tweet TweetTable::search(const std::string& text, int option)
 {
-    uint32_t hash = Hashfunction_fnv1a(text);
+    uint32_t hash;
+    if (option == 1) {
+        hash = Hashfunction_fnv1a(text);
+    }else{
+        hash = Hashfunction_mmh3(text);
+    }
     unsigned int index = hash % capacity;
     int n = 0;
     while((index + n*n) < capacity)
