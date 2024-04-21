@@ -20,8 +20,8 @@ class WordTable
     int Hashfunction_MMH3();
     //insertion functions
     void resize_arr();
-    void insert(Word jojo);
+    void insert(Word jojo, int option);
     void setLoadFactor();
     //traversal function
-    Word search(const std::string& text);
+    Word search(const std::string& text, int option);
 };
