@@ -11,14 +11,14 @@ int main(int argc, char *argv[])
 	//checkpoint 1
 	WordTable k = parse_entry_words(finished, 200000, 1);// 1 for fnv hash
 	//checkpoint 2
-	std::cout << k.size << std::endl;
-	std::cout << k.load_factor << std::endl;
-	std::cout << k.capacity << std::endl;
-	std::cout << k.num_of_collisions << std::endl;
+	std::cout << k.get_size() << std::endl;
+	std::cout << k.get_loadfactor() << std::endl;
+	std::cout << k.get_capacity() << std::endl;
+	std::cout << k.get_collisions() << std::endl;
 	//checkpoint1
 
 	//WordTable b = parse_entry_words(finished, 200000, 0);// 0 for MMH3 hash
-	//std::cout << b.num_of_collisions << std::endl;
+	//std::cout << b.get_collisions() << std::endl;
 	//checpoint 2
 
 	finished.clear();//just deallocates the memory after it's not needed

@@ -131,7 +131,8 @@ Word WordTable::search(const std::string& text, int option)
 
 std::vector<Word*> WordTable::emotion_analysis(int emotiontag)
 {
-    std::priority_queue<combinedWord, std::vector<combinedWord>, compareScores> pq;
+    //find the top 10 most associated words of any emotion using a priority queue
+    std::priority_queue<combinedWord, std::vector<combinedWord>, compareScores> pq;//this uses a special struct and bool to add Word Objects and their score and then sort them
     for(Word& a : arr)
     {
         if(a.word_name != "")
@@ -139,10 +140,11 @@ std::vector<Word*> WordTable::emotion_analysis(int emotiontag)
             pq.push(combinedWord(a, emotiontag));
         }
     }
-    std::vector<Word*> finalarr;
+    std::vector<Word*> finalarr;//keep in mind this returns a vector of POINTERS, you will need to use ->
     for(int i = 0; i < 10; i++)
     {
         combinedWord jo = pq.top();
+        //the below is a list of words that show up in every emotion tag's top 10 because they're used so frequently, i chose to just remove them
         while (jo.kin->word_name == "i" || jo.kin->word_name == "the" || jo.kin->word_name == "to" || jo.kin->word_name == "in" || jo.kin->word_name == "and" || jo.kin->word_name == "feel" || jo.kin->word_name == "and" || jo.kin->word_name == "a" || jo.kin->word_name == "of")
         {
             pq.pop();
