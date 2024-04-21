@@ -23,6 +23,19 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Project_3
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        datasetparsing.h
+        Hashfunctions.h
+        MurmurHash3.h
+        Tweet.h
+        TweetTable.h
+        WordTable.h
+        Word.h
+        WordTable.cpp
+        Word.cpp
+        TweetTable.cpp
+        MurmurHash3.cpp
+        Tweet.cpp
+        Hashfunctions.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Project_3 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
