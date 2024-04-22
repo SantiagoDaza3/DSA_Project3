@@ -10,15 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 }
 
-
-void MainWindow::setMMHTable(WordTable MMHTable)
-{
-    this->MMHTable = MMHTable;
-}
-void MainWindow::setFNVTable(WordTable FNVTable)
-{
-    this->FNVTable = FNVTable;
-};
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -46,10 +37,10 @@ void MainWindow::on_back_btn2_clicked()
 void MainWindow::on_analyze_btn_clicked()
 {
     QString passage = ui->sent_anal_input->toPlainText();
-
+    /*
     std::vector<float> emotions;
     if(table_used == 0){
-        emotions = MMHTable.passage_sentiment_analysis(passage.toStdString(), 0);
+        emotions = mmhTable.passage_sentiment_analysis(passage.toStdString(), 0);
     }
     else if(table_used == 1)
     {
@@ -70,7 +61,7 @@ void MainWindow::on_analyze_btn_clicked()
     ui->lineEdit_anger1->setText(anger_1);
     ui->lineEdit_fear1->setText(fear_1);
     ui->lineEdit_surp1->setText(surp_1);
-
+    */
     ui->stackedWidget->setCurrentIndex(2);
 
 }
