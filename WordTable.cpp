@@ -185,7 +185,17 @@ std::vector<float> WordTable::passage_sentiment_analysis(const std::string &pass
             return_arr[i] += temp_arr[i];
         }
     }
-    return return_arr;
+    std::vector<float> new_return_arr;
+    float sum = 0;
+    for(int i = 0; i < 6; i++)
+    {
+        sum += return_arr[i];
+    }
+    for(int i = 0; i < 6; i++)
+    {
+        new_return_arr.push_back((return_arr[i]/sum)*100);
+    }
+    return new_return_arr;
 };
 void WordTable::contribute_to_dataset(std::string &passage, int emotiontag, int option)
 {
