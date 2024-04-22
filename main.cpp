@@ -87,6 +87,8 @@ int main(int argc, char *argv[])
 	*/
     QApplication a(argc, argv);
     MainWindow w;
+    w.setMMHTable(mmhTable);
+    w.setFNVTable(FNVTable);
     w.show();
     return a.exec();
 }

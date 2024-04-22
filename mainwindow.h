@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "WordTable.h"
 #pragma once
 
 QT_BEGIN_NAMESPACE
@@ -17,9 +18,14 @@ class MainWindow : public QMainWindow
 public:
 
     bool table_used = 0;
+    //MainWindow(QWidget *parent = nullptr);
+    //~MainWindow();
+    WordTable MMHTable;
+    WordTable FNVTable;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void setMMHTable(WordTable MMHTable);
+    void setFNVTable(WordTable FNVTable);
 private slots:
 
     void on_Snt_Anal_Btn_clicked();
