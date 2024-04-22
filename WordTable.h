@@ -55,7 +55,7 @@ public:
     int return_size() { return size; }
     //UI functions
     void contribute_to_dataset(
-        std::string &passage,
+        const std::string &passage,
         int emotiontag,
         int option); //allows the user to insert a passage, tag with emotion, and has int option for which hashing function to use
     std::vector<float> passage_sentiment_analysis(

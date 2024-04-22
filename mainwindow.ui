@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="main_menu">
      <widget class="QFrame" name="frame">
@@ -76,6 +76,9 @@
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
         <item alignment="Qt::AlignHCenter">
          <widget class="QPushButton" name="Snt_Anal_Btn">
           <property name="sizePolicy">
@@ -1151,12 +1154,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </item>
        <item>
         <property name="text">
-         <string>Anger</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Fear</string>
+         <string>Sadness</string>
         </property>
        </item>
        <item>
@@ -1171,7 +1169,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </item>
        <item>
         <property name="text">
-         <string>Sadness</string>
+         <string>Anger</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Fear</string>
         </property>
        </item>
        <item>
@@ -1349,12 +1352,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <widget class="QComboBox" name="contribution_box">
           <item>
            <property name="text">
-            <string>Anger</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Fear</string>
+            <string>Sadness</string>
            </property>
           </item>
           <item>
@@ -1369,7 +1367,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </item>
           <item>
            <property name="text">
-            <string>Sadness</string>
+            <string>Anger</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Fear</string>
            </property>
           </item>
           <item>

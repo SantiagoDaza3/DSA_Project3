@@ -142,7 +142,7 @@ std::vector<Word *> WordTable::emotion_analysis(int emotiontag)
         while (jo.kin->word_name == "i" || jo.kin->word_name == "the" || jo.kin->word_name == "to"
                || jo.kin->word_name == "in" || jo.kin->word_name == "and"
                || jo.kin->word_name == "feel" || jo.kin->word_name == "and"
-               || jo.kin->word_name == "a" || jo.kin->word_name == "of") {
+               || jo.kin->word_name == "a" || jo.kin->word_name == "of" || jo.kin->word_name == "feeling" || jo.kin->word_name == "that" || jo.kin->word_name == "my" || jo.kin->word_name == "so" || jo.kin->word_name == "for" || jo.kin->word_name == "it" || jo.kin->word_name == "im" || jo.kin->word_name == "me" || jo.kin->word_name == "feeling" || jo.kin->word_name == "is" || jo.kin->word_name == "like"|| jo.kin->word_name == "like" || jo.kin->word_name == "be" || jo.kin->word_name == "this" || jo.kin->word_name == "with" || jo.kin->word_name == "more" || jo.kin->word_name == "am" || jo.kin->word_name == "as" || jo.kin->word_name == "feeling") {
             pq.pop();
             jo = pq.top();
         }
@@ -205,7 +205,7 @@ std::vector<float> WordTable::passage_sentiment_analysis(const std::string &pass
     }
     return new_return_arr;
 };
-void WordTable::contribute_to_dataset(std::string &passage, int emotiontag, int option)
+void WordTable::contribute_to_dataset(const std::string &passage, int emotiontag, int option)
 {
     std::istringstream iss(passage);
     std::string word;

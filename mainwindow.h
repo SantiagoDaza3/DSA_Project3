@@ -63,6 +63,8 @@ private slots:
 
     void on_contribute_btn_clicked();
 
+    void on_emo_ana_box_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 };

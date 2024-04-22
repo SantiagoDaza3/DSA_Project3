@@ -82,6 +82,7 @@ void MainWindow::on_Wrd_Anal_Btn_clicked()
 
 void MainWindow::on_wrd_analyze_btn_clicked()
 {
+
     QString passage = ui->wrd_anal_line_edit->text();
 
     std::vector<float> emotions;
@@ -105,6 +106,7 @@ void MainWindow::on_wrd_analyze_btn_clicked()
     ui->lineEdit_anger2->setText(anger_2);
     ui->lineEdit_fear2->setText(fear_2);
     ui->lineEdit_surp2->setText(surp_2);
+
 
     ui->stackedWidget->setCurrentIndex(4);
 }
@@ -179,9 +181,48 @@ void MainWindow::on_back_btn4_clicked()
 
 void MainWindow::on_contribute_btn_clicked()
 {
+    //Contribute to database using chosen parameters
+    QString passage = ui->contribution_input_txt->toPlainText();
+
+    std::string input_passage = passage.toStdString();
+
+    if(table_used == 0){
+        MMHTable.contribute_to_dataset(input_passage, ui->contribution_box->currentIndex(), 0);
+    }
+    else if(table_used == 1)
+    {
+        FNVTable.contribute_to_dataset(input_passage, ui->contribution_box->currentIndex(), 1);
+    }
+
+
     ui->contribution_input_txt->clear();
     ui->contribution_box->setCurrentIndex(0);
+}
 
-    //Contribute to database using chosen parameters
+
+
+
+void MainWindow::on_emo_ana_box_currentIndexChanged(int index)
+{
+    if(index > 0)
+    {
+        std::vector<Word*> emotions;
+        if(table_used == 0){
+            emotions = MMHTable.emotion_analysis(index - 1);
+        }
+        else if(table_used == 1)
+        {
+            emotions = FNVTable.emotion_analysis(index - 1);
+        }
+        std::string return_thingy = "";
+        for(int i = 0; i < 10; i++)
+        {
+            return_thingy += emotions[i]->word_name + ", ";
+        }
+        return_thingy.pop_back();
+        return_thingy.pop_back();
+        QString actual_return = QString::fromStdString(return_thingy);
+        ui->emo_anl_txt_edit->setText(actual_return);
+    }
 }
 
