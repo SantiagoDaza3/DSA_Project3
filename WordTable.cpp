@@ -152,7 +152,7 @@ std::vector<Word *> WordTable::emotion_analysis(int emotiontag)
     return finalarr;
 };
 
-std::vector<float> WordTable::word_analysis(std::string &word, int option)
+std::vector<float> WordTable::word_analysis(const std::string &word, int option)
 {
     Word searched = search(word, option);
     std::string text = searched.word_name;

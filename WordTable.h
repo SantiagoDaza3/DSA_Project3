@@ -62,7 +62,7 @@ public:
         const std::string &passage,
         int option); //takes a passage from the user's breaks it into words and calculates a score for it word by word and adds it together for all the emotions. The score is based on the number of times that emotion has been called for that word and what percent of the entire words use is for that emotion
     std::vector<float> word_analysis(
-        std::string &word,
+        const std::string &word,
         int option); //essentially returns the percentages of a word's emotion frequencies. Philadelphia is in 3 angry tweets, 1 happy tweet, it is 75% angry 25% happy
     std::vector<Word *> emotion_analysis(
         int emotiontag); //returns the top 10 words from any emotion, based on its emotion tag
