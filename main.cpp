@@ -1,15 +1,27 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "datasetparsing.h"
+#include <chrono>
 #pragma once
 
 int main(int argc, char *argv[])
 {
+    using std::chrono::high_resolution_clock;
+    using std::chrono::duration_cast;
+    using std::chrono::duration;
+    using std::chrono::milliseconds;
+    
     std::vector<std::vector<std::string>> finisher = parsed_rows("../../text.csv");
 
+    auto mmhTableTime1 = high_resolution_clock::now();
     WordTable mmhTable = parse_entry_words(finisher, 200000, 0);
+    auto mmhTableTime2 = high_resolution_clock::now();
+    auto mmhTable_executionTime = duration_cast<milliseconds>(mmhTableTime2 - mmhTableTime1);
 
+    auto FNVTableTime1 = high_resolution_clock::now();
     WordTable FNVTable = parse_entry_words(finisher, 200000, 1);
+    auto FNVTableTime2 = high_resolution_clock::now();
+    auto FNVTable_executionTime = duration_cast<milliseconds>(FNVTableTime2 - FNVTableTime1);
 
     /*
         std::vector<std::vector<std::string>> finished = parsed_rows("text.csv");
