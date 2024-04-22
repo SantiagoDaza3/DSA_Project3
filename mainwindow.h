@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#pragma once
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,10 +15,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
+    bool table_used = 0;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
+
     void on_Snt_Anal_Btn_clicked();
 
     void on_back_btn1_clicked();

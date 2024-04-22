@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -34,7 +36,34 @@ void MainWindow::on_back_btn2_clicked()
 
 void MainWindow::on_analyze_btn_clicked()
 {
+    QString passage = ui->sent_anal_input->toPlainText();
+    /*
+    std::vector<float> emotions;
+    if(table_used == 0){
+        emotions = mmhTable.passage_sentiment_analysis(passage.toStdString(), 0);
+    }
+    else if(table_used == 1)
+    {
+        emotions = FNVTable.passage_sentiment_analysis(passage.toStdString(), 1);
+    }
+
+
+
+    QString sad_1 = QString::number(emotions[0]);
+    QString joy_1 = QString::number(emotions[1]);
+    QString love_1 = QString::number(emotions[2]);
+    QString anger_1 = QString::number(emotions[3]);
+    QString fear_1 = QString::number(emotions[4]);
+    QString surp_1 = QString::number(emotions[5]);
+    ui->lineEdit_sad1->setText(sad_1);
+    ui->lineEdit_joy1->setText(joy_1);
+    ui->lineEdit_love1->setText(love_1);
+    ui->lineEdit_anger1->setText(anger_1);
+    ui->lineEdit_fear1->setText(fear_1);
+    ui->lineEdit_surp1->setText(surp_1);
+    */
     ui->stackedWidget->setCurrentIndex(2);
+
 }
 
 
@@ -106,12 +135,14 @@ void MainWindow::on_contribute_Btn_clicked()
 void MainWindow::on_murmur_btn_clicked()
 {
     //Set hashing algorithm to murmurhash
+    table_used = 0;
 }
 
 
 void MainWindow::on_fnv_btn_clicked()
 {
     //Set hashing algorithm to FNV
+    table_used = 1;
 }
 
 

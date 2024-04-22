@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="main_menu">
      <widget class="QFrame" name="frame">
@@ -635,9 +635,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>420</x>
-         <y>60</y>
+         <y>30</y>
          <width>101</width>
-         <height>281</height>
+         <height>361</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -708,6 +708,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </item>
         <item>
          <widget class="QLineEdit" name="lineEdit_surp1">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="text">
            <string>0</string>
           </property>
@@ -725,9 +728,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>70</y>
+         <y>50</y>
          <width>104</width>
-         <height>251</height>
+         <height>321</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -976,9 +979,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>420</x>
-         <y>60</y>
+         <y>30</y>
          <width>101</width>
-         <height>281</height>
+         <height>361</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1066,9 +1069,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>70</y>
+         <y>50</y>
          <width>104</width>
-         <height>251</height>
+         <height>311</height>
         </rect>
        </property>
        <property name="frameShape">

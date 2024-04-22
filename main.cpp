@@ -1,9 +1,16 @@
 #include "mainwindow.h"
-
 #include <QApplication>
+#include "datasetparsing.h"
+#pragma once
 
 int main(int argc, char *argv[])
 {
+    std::vector<std::vector<std::string>> finisher = parsed_rows("text.csv");
+
+    WordTable mmhTable = parse_entry_words(finisher, 200000, 0);
+
+    WordTable FNVTable = parse_entry_words(finisher, 200000, 1);
+
     	/*
         std::vector<std::vector<std::string>> finished = parsed_rows("text.csv");
 		//you can put checkpoints before and after this code to track the execution time using chronos or whatever
@@ -83,3 +90,4 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
+
