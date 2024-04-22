@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #pragma once
-
+#include "WordTable.H"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -15,10 +15,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
+    WordTable MMHTable;
+    WordTable FNVTable;
     bool table_used = 0;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setMMHTable(WordTable mmh)
+    {
+        MMHTable = mmh;
+    };
+    void setFNVTable(WordTable fnv)
+    {
+        FNVTable = fnv;
+    }
 
 private slots:
 

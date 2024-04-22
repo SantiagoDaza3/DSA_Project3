@@ -1,19 +1,18 @@
 #pragma once
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <string>
 #include "Tweet.h"
 #include "TweetTable.h"
 #include "WordTable.h"
-
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 std::vector<std::vector<std::string>> parsed_rows(std::string file_name)
 {
     std::string filename{file_name};
-    std::ifstream input{ filename };
+    std::ifstream input{filename};
     std::vector<std::vector<std::string>> csvRows;
 
     if (!input.is_open()) {
@@ -33,8 +32,10 @@ std::vector<std::vector<std::string>> parsed_rows(std::string file_name)
     }
     return csvRows;
 }
-TweetTable parse_entry(std::vector<std::vector<std::string>>& parsed_rows, unsigned int capacity, int option)
-{    
+TweetTable parse_entry(std::vector<std::vector<std::string>> &parsed_rows,
+                       unsigned int capacity,
+                       int option)
+{
     TweetTable bigboy(capacity);
     for (int i = 1; i < parsed_rows.size(); i++) {
         std::string tweet = parsed_rows[i][1];
@@ -44,7 +45,9 @@ TweetTable parse_entry(std::vector<std::vector<std::string>>& parsed_rows, unsig
     }
     return bigboy;
 }
-WordTable parse_entry_words(std::vector<std::vector<std::string>>& parsed_rows, unsigned int capacity, int option)
+WordTable parse_entry_words(std::vector<std::vector<std::string>> &parsed_rows,
+                            unsigned int capacity,
+                            int option)
 {
     WordTable bigboy(capacity);
 

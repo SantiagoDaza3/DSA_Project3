@@ -18,8 +18,7 @@ void Word::modify_value(int tag)
 };
 float Word::calculate_score(unsigned int emotiontag)
 {
-    if (num_of_repeats == 0)
-    {
+    if (num_of_repeats == 0) {
         return 0;
     }
     float fraction = static_cast<float>(emotion_values[emotiontag]) / num_of_repeats;
