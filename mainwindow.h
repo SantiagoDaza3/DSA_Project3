@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "datasetparsing.h"
 #pragma once
-#include "WordTable.H"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
