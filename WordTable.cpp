@@ -152,14 +152,18 @@ std::vector<Word *> WordTable::emotion_analysis(int emotiontag)
     return finalarr;
 };
 
-std::vector<float> WordTable::word_analysis(std::string &word, int option)
+std::vector<float> WordTable::word_analysis(const std::string &word, int option)
 {
     Word searched = search(word, option);
     std::string text = searched.word_name;
     std::vector<float> emotion_percentages;
     for (int i = 0; i < 6; i++) {
-        emotion_percentages.push_back(static_cast<float>(searched.emotion_values[i])
-                                      / searched.num_of_repeats);
+        emotion_percentages.push_back((static_cast<float>(searched.emotion_values[i])
+                                      / searched.num_of_repeats)*100);
+    }
+    if(emotion_percentages.empty())
+    {
+        emotion_percentages = {0.0,0.0,0.0,0.0,0.0,0.0};
     }
     return emotion_percentages;
 };
@@ -168,7 +172,7 @@ std::vector<float> WordTable::passage_sentiment_analysis(const std::string &pass
 {
     std::istringstream iss(passage);
     std::string word;
-    std::vector<float> return_arr = {0, 0, 0, 0, 0, 0};
+    std::vector<float> return_arr = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     while (std::getline(iss, word, ' ')) {
         Word temp = search(word, option);
         std::vector<float> temp_arr;
@@ -194,6 +198,10 @@ std::vector<float> WordTable::passage_sentiment_analysis(const std::string &pass
     for(int i = 0; i < 6; i++)
     {
         new_return_arr.push_back((return_arr[i]/sum)*100);
+    }
+    if(new_return_arr.empty())
+    {
+        new_return_arr = {0.0,0.0,0.0,0.0,0.0,0.0};
     }
     return new_return_arr;
 };

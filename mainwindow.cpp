@@ -82,6 +82,30 @@ void MainWindow::on_Wrd_Anal_Btn_clicked()
 
 void MainWindow::on_wrd_analyze_btn_clicked()
 {
+    QString passage = ui->wrd_anal_line_edit->text();
+
+    std::vector<float> emotions;
+    if(table_used == 0){
+        emotions = MMHTable.word_analysis(passage.toStdString(), 0);
+    }
+    else if(table_used == 1)
+    {
+        emotions = FNVTable.word_analysis(passage.toStdString(), 1);
+    }
+
+    QString sad_2 = QString::number(emotions[0]);
+    QString joy_2 = QString::number(emotions[1]);
+    QString love_2 = QString::number(emotions[2]);
+    QString anger_2 = QString::number(emotions[3]);
+    QString fear_2 = QString::number(emotions[4]);
+    QString surp_2 = QString::number(emotions[5]);
+    ui->lineEdit_sad2->setText(sad_2);
+    ui->lineEdit_joy2->setText(joy_2);
+    ui->lineEdit_love2->setText(love_2);
+    ui->lineEdit_anger2->setText(anger_2);
+    ui->lineEdit_fear2->setText(fear_2);
+    ui->lineEdit_surp2->setText(surp_2);
+
     ui->stackedWidget->setCurrentIndex(4);
 }
 
