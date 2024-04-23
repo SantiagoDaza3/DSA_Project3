@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
     WordTable FNVTable = parse_entry_words(finisher, 200000, 1);
     auto FNVTableTime2 = high_resolution_clock::now();
     auto FNVTable_executionTime = duration_cast<milliseconds>(FNVTableTime2 - FNVTableTime1);
-
     /*
         std::vector<std::vector<std::string>> finished = parsed_rows("text.csv");
         //you can put checkpoints before and after this code to track the execution time using chronos or whatever

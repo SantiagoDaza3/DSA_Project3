@@ -65,6 +65,8 @@ private slots:
 
     void on_emo_ana_box_currentIndexChanged(int index);
 
+    void on_hash_stat_btn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

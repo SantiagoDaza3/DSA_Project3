@@ -13,6 +13,7 @@ private:                   //screen.blit();
     int capacity;          //sets capacity of the hash table
     int size;              //number of elements inside
     unsigned int num_of_collisions = 0;
+    float execution_time = 0;
 
 public:
     //constructors
@@ -67,4 +68,15 @@ public:
     std::vector<Word *> emotion_analysis(
         int emotiontag); //returns the top 10 words from any emotion, based on its emotion tag
     float passion_analysis(std::string &passage, int option);
+
+    void setExecutionTime(float jojo)
+    {
+        execution_time = jojo;
+    }
+    float returnExecutionTime()
+    {
+        return execution_time;
+    }
 };
+
+

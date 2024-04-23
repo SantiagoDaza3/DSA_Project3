@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->execution_frame->hide();
 }
 
 MainWindow::~MainWindow()
@@ -224,5 +225,24 @@ void MainWindow::on_emo_ana_box_currentIndexChanged(int index)
         QString actual_return = QString::fromStdString(return_thingy);
         ui->emo_anl_txt_edit->setText(actual_return);
     }
+}
+
+
+void MainWindow::on_hash_stat_btn_clicked()
+{
+    unsigned int num_collisions_mmh = MMHTable.return_collisions();
+    unsigned int num_collisions_fnv = FNVTable.return_collisions();
+
+    float exec_time_mmh = MMHTable.returnExecutionTime();
+    float exec_time_fnv = FNVTable.returnExecutionTime();
+
+    QString input_string = "";
+
+    input_string += "MMH Collisions: " + QString::number(num_collisions_mmh) + "\n";
+    input_string += "FNV Collisions: " + QString::number(num_collisions_fnv) + "\n";
+    input_string += "MMH Exec Time: " + QString::number(exec_time_mmh) + " ms" + "\n";
+    input_string += "FNV Exec Time: " + QString::number(exec_time_fnv) + " ms" + "\n";
+
+    ui->stats_text->setText(input_string);
 }
 

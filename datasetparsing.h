@@ -8,6 +8,10 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <chrono>
+
+using namespace std::chrono;
+
 
 std::vector<std::vector<std::string>> parsed_rows(std::string file_name)
 {
@@ -45,12 +49,10 @@ TweetTable parse_entry(std::vector<std::vector<std::string>> &parsed_rows,
     }
     return bigboy;
 }
-WordTable parse_entry_words(std::vector<std::vector<std::string>> &parsed_rows,
-                            unsigned int capacity,
-                            int option)
+WordTable parse_entry_words(std::vector<std::vector<std::string>>& parsed_rows, unsigned int capacity, int option)
 {
     WordTable bigboy(capacity);
-
+    auto start = high_resolution_clock::now();
     for (int i = 1; i < parsed_rows.size(); i++) {
         std::string tweet = parsed_rows[i][1];
         int emotiontag = stoi(parsed_rows[i][2]);
@@ -62,5 +64,8 @@ WordTable parse_entry_words(std::vector<std::vector<std::string>> &parsed_rows,
             bigboy.insert(obj, option);
         }
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(stop - start);
+    bigboy.setExecutionTime(duration.count());
     return bigboy;
 }

@@ -142,7 +142,7 @@ std::vector<Word *> WordTable::emotion_analysis(int emotiontag)
         while (jo.kin->word_name == "i" || jo.kin->word_name == "the" || jo.kin->word_name == "to"
                || jo.kin->word_name == "in" || jo.kin->word_name == "and"
                || jo.kin->word_name == "feel" || jo.kin->word_name == "and"
-               || jo.kin->word_name == "a" || jo.kin->word_name == "of" || jo.kin->word_name == "feeling" || jo.kin->word_name == "that" || jo.kin->word_name == "my" || jo.kin->word_name == "so" || jo.kin->word_name == "for" || jo.kin->word_name == "it" || jo.kin->word_name == "im" || jo.kin->word_name == "me" || jo.kin->word_name == "feeling" || jo.kin->word_name == "is" || jo.kin->word_name == "like"|| jo.kin->word_name == "like" || jo.kin->word_name == "be" || jo.kin->word_name == "this" || jo.kin->word_name == "with" || jo.kin->word_name == "more" || jo.kin->word_name == "am" || jo.kin->word_name == "as" || jo.kin->word_name == "feeling") {
+               || jo.kin->word_name == "a" || jo.kin->word_name == "of" || jo.kin->word_name == "feeling" || jo.kin->word_name == "that" || jo.kin->word_name == "my" || jo.kin->word_name == "so" || jo.kin->word_name == "for" || jo.kin->word_name == "it" || jo.kin->word_name == "im" || jo.kin->word_name == "me" || jo.kin->word_name == "feeling" || jo.kin->word_name == "is" || jo.kin->word_name == "like"|| jo.kin->word_name == "like" || jo.kin->word_name == "be" || jo.kin->word_name == "this" || jo.kin->word_name == "with" || jo.kin->word_name == "more" || jo.kin->word_name == "am" || jo.kin->word_name == "as" || jo.kin->word_name == "feeling" || jo.kin->word_name == "but" || jo.kin->word_name == "about" || jo.kin->word_name == "or" || jo.kin->word_name == "on" || jo.kin->word_name == "have" || jo.kin->word_name == "was" || jo.kin->word_name == "not" || jo.kin->word_name == "when" || jo.kin->word_name == "just" || jo.kin->word_name == "at" || jo.kin->word_name == "t" || jo.kin->word_name == "you") {
             pq.pop();
             jo = pq.top();
         }
@@ -152,18 +152,18 @@ std::vector<Word *> WordTable::emotion_analysis(int emotiontag)
     return finalarr;
 };
 
-std::vector<float> WordTable::word_analysis(const std::string &word, int option)
+std::vector<float> WordTable::word_analysis(const std::string& word, int option)
 {
     Word searched = search(word, option);
     std::string text = searched.word_name;
-    std::vector<float> emotion_percentages;
-    for (int i = 0; i < 6; i++) {
-        emotion_percentages.push_back((static_cast<float>(searched.emotion_values[i])
-                                      / searched.num_of_repeats)*100);
-    }
-    if(emotion_percentages.empty())
+    if (searched.word_name == "")
     {
-        emotion_percentages = {0.0,0.0,0.0,0.0,0.0,0.0};
+        return { 0,0,0,0,0,0};
+    }
+    std::vector<float> emotion_percentages;
+    for(int i = 0; i < 6; i++)
+    {
+        emotion_percentages.push_back(static_cast<float>(searched.emotion_values[i]) / (searched.num_of_repeats) * 100);
     }
     return emotion_percentages;
 };
